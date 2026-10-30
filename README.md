@@ -104,3 +104,11 @@ deterministic example.
 python -m unittest discover -s tests -v
 ```
 
+## Development status
+
+Claude Code has been used to assist development of the original project. This repository contains the current source snapshot, not reconstructed development history or AI conversation logs. Code and technical claims still need human review.
+
+The implementation prioritizes understandable numerical behavior over speed. There are no speedup claims or published GPU measurements here. Further work includes profiling on representative GPUs, broader randomized differential testing, CUDA memory-safety checks, and evaluating faster tiling strategies without changing masking or numerical semantics.
+
+This repository deliberately excludes external evaluation harnesses, scoring scripts, model rollout exports, task-upload archives, platform guidelines, review receipts, and private work records. No open-source license is selected in this snapshot; public visibility alone does not grant reuse rights.
+
