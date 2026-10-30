@@ -1,0 +1,43 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run public tests
+        run: python -m unittest discover -s tests -v
+      - name: Run and audit deterministic example
+        shell: bash
+        run: |
+          python bin/run_eval.py \
+            --problems fixtures/visible_problems.jsonl \
+            --engine-module fixtures/visible_engine.py \
+            --output-dir results \
+            --samples-per-problem 2 \
+            --max-turns 3 \
+            --temperature 1.0 \
+            --top-p 0.6 \
+            --max-tokens 512 \
+            --seed 410
+          python bin/run_eval.py \
+            --problems fixtures/visible_problems.jsonl \
+            --engine-module fixtures/visible_engine.py \
+            --output-dir results \
+            --samples-per-problem 2 \
+            --max-turns 3 \
+            --temperature 1.0 \
+            --top-p 0.6 \
+            --max-tokens 512 \
+            --seed 410 \
+            --audit

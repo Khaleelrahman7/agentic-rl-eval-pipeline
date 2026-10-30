@@ -1,0 +1,3 @@
+{"problem_id":"visible-add","prompt":"Compute two plus two. Use the tool once before answering.","answer":"4"}
+{"problem_id":"visible-nested","prompt":"Return one half as a LaTeX fraction.","answer":"\\frac{1}{2}"}
+{"problem_id":"visible-unscored","prompt":"Return the requested sentinel answer.","answer":null}
